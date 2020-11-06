@@ -15,6 +15,7 @@
 
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap?&family=Exo&display=swap');
     nav {
         margin-top: 1em;
         width: 100%;
@@ -26,13 +27,18 @@
 
     #barwise-heading {
         font-size: 2em;
-    }
+        font-family: 'Rock Salt', sans-serif;
+        text-align: center;
+  }
 
     .category-nav {
         border-radius: 0.4em;
         border-bottom: 2px solid gray;
-        padding: 0.7em;
         justify-self: center;
+        align-self: center;
+        padding: 0.2em;
+        font-family: 'Exo', sans-serif;
+        margin-top: 0.5em;
     }
 
     .category-nav a {
@@ -42,9 +48,10 @@
 
     .category-nav a h2 {
         font-weight: 400;
+        font-size: 1.3em;
     }
 
     .category-nav:nth-child(4) {
-        background: rgb(0,207,255,0.6);
+        border: 2px solid  rgb(0,207,255,0.6);
     }
 </style>
