@@ -1,6 +1,5 @@
 <template>
   <div class="container">
-    <h1 id="barwise-heading">Brandon Barwise Animation</h1>
     <TheNav />
     <main>
         <div id="animations-container">
@@ -32,6 +31,10 @@ export default {
     box-shadow: 0 1em 3em gray;
     animation: slow-fade 2s linear;
     margin: 0 auto;
+  }
+
+  #showcase-reel:focus {
+    outline: none;
   }
 
   @keyframes slow-fade {
