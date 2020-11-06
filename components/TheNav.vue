@@ -52,6 +52,6 @@
     }
 
     .category-nav:nth-child(4) {
-        border: 2px solid  rgb(0,207,255,0.6);
+        border-bottom: 2px solid  rgb(0,207,255,0.6);
     }
 </style>

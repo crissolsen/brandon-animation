@@ -27,7 +27,7 @@ export default {
     border-radius: 1em;
     padding: 1em;
     box-shadow: 0 1em 3em gray;
-    animation: slow-fade 2s linear;
+    animation: slow-fade 1.3s forwards;
     margin: 0 auto;
   }
 
@@ -36,8 +36,7 @@ export default {
   }
 
   @keyframes slow-fade {
-    0% {opacity: 0}
-    100% {opacity: 1}
+    0% {transform: translate(0, -500px) rotateZ(150deg)}
   }
 
   .container {
