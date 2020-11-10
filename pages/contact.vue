@@ -6,7 +6,7 @@
       Enquiry Form
     </h1>
     <div class="content">
-      <form name="contact"  :action= "`/`" netlify>     
+      <form name="contact"  :action= "`/`" method="POST" netlify>     
         <label class="form-label" for="name">
           Name:
         </label>
