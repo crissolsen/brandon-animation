@@ -24,7 +24,7 @@
     </div>
   </div>
   <div v-else id="submitted">
-    <h1>Thank you for filling out that form. We look forward to chatting with you further.</h1>
+    <h1>Thank you for filling out that form. I look forward to chatting with you further.</h1>
     </div>
     <TheFooter />
   </div>
@@ -44,7 +44,7 @@ export default {
     async submit() {
       try {
         const res = await this.$axios.request({
-          url: "https://formspree.io/",
+          url: "https://formspree.io/f/xvovqopk",
           method: 'post',
           data: this.$data
         })
