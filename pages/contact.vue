@@ -6,7 +6,7 @@
       Enquiry Form
     </h1>
     <div class="content">
-      <form name="contact"  :action= "`/`" method="POST" netlify>     
+      <form name="contact"  @submit.stop.prevent= "submit" netlify>     
         <label class="form-label" for="name">
           Name:
         </label>
@@ -41,20 +41,20 @@ export default {
       submitted: false
     }
   },
-//   methods: {
-//     async submit() {
-//       try {
-//         const res = await this.$axios.request({
-//           url: "https://formspree.io/f/mdopzqpo",
-//           method: 'post',
-//           data: this.$data
-//         })
-//         this.submitted = true
-//       } catch (err) {
-//         console.log(err)
-//       }
-//     }
-//   }
+  methods: {
+    async submit() {
+      try {
+        const res = await this.$axios.request({
+          url: "https://formspree.io/",
+          method: 'post',
+          data: this.$data
+        })
+        this.submitted = true
+      } catch (err) {
+        console.log(err)
+      }
+    }
+  }
 }
 </script>
 
