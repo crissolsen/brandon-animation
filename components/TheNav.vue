@@ -1,6 +1,6 @@
 <template>
     <nav>
-        <h1 id="barwise-heading">Brandon Barwise Animation</h1>
+        <NuxtLink :to= "`/`" id="barwise-heading"><h1 >Brandon Barwise Animation</h1></NuxtLink>
         <div class="category-nav">
             <NuxtLink :to="`/modelling`"><h2>Character and Prop Modelling</h2></NuxtLink>
         </div>
@@ -15,7 +15,7 @@
 
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap?&family=Exo&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap?&family=Exo&display=swap');    
     nav {
         margin-top: 1em;
         width: 100%;
@@ -26,9 +26,11 @@
     }
 
     #barwise-heading {
-        font-size: 2em;
+        font-size: 1.3em;
         font-family: 'Rock Salt', sans-serif;
         text-align: center;
+        color: black;
+        text-decoration: none;
   }
 
     .category-nav {
