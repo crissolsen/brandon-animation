@@ -6,6 +6,7 @@
                 <source :src= "vidURI(modelVid.public_id)" alt="animated video" />
             </video>
         </div>
+        <TheFooter />
     </div>
 </template>
 

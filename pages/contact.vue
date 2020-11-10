@@ -25,9 +25,8 @@
   </div>
   <div v-else id="submitted">
     <h1>Thank you for filling out that form. We look forward to chatting with you further.</h1>
-
-    <MailChimpSignUp />
-    <SocialMediaLogos /></div>
+    </div>
+    <TheFooter />
   </div>
 </template>
 

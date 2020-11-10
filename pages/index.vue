@@ -1,4 +1,4 @@
-<template>
+<template v-slot:bar>
   <div class="container">
     <TheNav />
     <main>
@@ -9,6 +9,8 @@
         </video>
     </main>
     <AboutMe />
+    <TheFooter />
+    <CookieControl/>
   </div>
 </template>
 

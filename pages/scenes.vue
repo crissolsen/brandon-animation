@@ -1,11 +1,12 @@
 <template>
-    <div>
+    <div id="scenes">
         <TheNav />
         <div id= "video-container">
             <video v-for= "modelVid in modelVids" :key= "modelVid.public_id" controls>
                 <source :src= "vidURI(modelVid.public_id)" alt="animated video" />
             </video>
         </div>
+        <TheFooter />
     </div>
 </template>
 
@@ -29,6 +30,7 @@ export default {
 </script>
 
 <style scoped>
+
     #video-container {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -36,6 +38,7 @@ export default {
         grid-row-gap: 1em;
         width: 90%;
         margin: 1em auto;
+        align-self: center;
     }
 
     #video-container video {

@@ -43,8 +43,29 @@ export default {
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
     // https://go.nuxtjs.dev/axios
-    "@nuxtjs/axios"
+    "@nuxtjs/axios",
+    "nuxt-cookie-control"
   ],
+
+  cookies: {
+  necessary: [
+    {
+      //if multilanguage
+      name: {
+        en: 'Default Cookies'
+      },
+      //else
+      name:  'Default Cookies',
+      //if multilanguage
+      description: {
+        en:  'Used for cookie control.'
+      },
+      //else
+      description:  'Used for cookie control.',
+      cookies: ['cookie_control_consent', 'cookie_control_enabled_cookies']
+    }
+  ],
+},
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
   axios: {},
