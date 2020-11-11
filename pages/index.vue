@@ -21,7 +21,9 @@ export default {
 </script>
 
 <style>
-  
+  #animations-container {
+    margin-top: 1em;
+  }
   
   #showcase-reel {
     width: 100%;

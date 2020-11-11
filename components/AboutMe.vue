@@ -2,10 +2,9 @@
   <footer>
     <h2>About Me</h2>
     <p>
-      I am a freelance 3D animator.
-      Born in South Africa and currently live in Belgium.
-      I am a creative individual with an artstic eye.
-      I am currently working on an indie game title by Celtic Dragon Studios.
+      I am a South African currently living in Belgium.
+      With a passion for the entertainment industry, I strive to give the best result for all projects I work on. All constructive criticisms and suggestions are welcome at all times, thus improving my skills and giving the project the best quality possible.
+Other interests include history, science fiction and videogames
     </p>
   </footer>
 </template>
@@ -19,7 +18,8 @@
 
     footer h2 {
         margin-top: 1em;
-        font-family: 'Rock Salt', sans-serif;
+        font-size: 2em;
+        font-family: 'Architects Daughter', sans-serif;
         text-align: center;
     }
 

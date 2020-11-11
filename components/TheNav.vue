@@ -15,9 +15,9 @@
 
 
 <style scoped>
-    @import url('https://fonts.googleapis.com/css2?family=Rock+Salt&display=swap?&family=Exo&display=swap');    
+    @import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap?&family=Exo&display=swap');    
     nav {
-        margin-top: 1em;
+        margin-top: 2em;
         width: 100%;
         display: flex;
         justify-content: space-evenly;
@@ -26,11 +26,18 @@
     }
 
     #barwise-heading {
-        font-size: 1.3em;
-        font-family: 'Rock Salt', sans-serif;
+        font-size: 2em;
+        margin-bottom: 1em;
+        font-family: 'Architects Daughter', sans-serif;
         text-align: center;
         color: black;
         text-decoration: none;
+  }
+
+  #barwise-heading h1 {
+      box-shadow: 1em 1em 1em gray;
+      border-radius: 0.5em;
+      padding: 0.7em;
   }
 
     .category-nav {
