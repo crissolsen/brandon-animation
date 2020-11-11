@@ -17,7 +17,7 @@
 <style scoped>
     @import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap?&family=Exo&display=swap');    
     nav {
-        margin-top: 2em;
+        margin-top: 1em;
         width: 100%;
         display: flex;
         justify-content: space-evenly;
