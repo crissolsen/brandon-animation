@@ -2,10 +2,7 @@
     <nav>
         <NuxtLink :to= "`/`" id="barwise-heading"><h1 >Brandon Barwise Animation</h1></NuxtLink>
         <div class="category-nav">
-            <NuxtLink :to="`/modelling`"><h2>Character and Prop Modelling</h2></NuxtLink>
-        </div>
-        <div class="category-nav">
-            <NuxtLink :to="`/scenes`"><h2>Animated Scenes</h2></NuxtLink>
+            <NuxtLink :to="`/animation`"><h2>Portfolio of Work</h2></NuxtLink>
         </div>
         <div class="category-nav">
             <NuxtLink :to="`/contact`"><h2>Get Your Animation</h2></NuxtLink>
@@ -35,7 +32,6 @@
   }
 
   #barwise-heading h1 {
-      box-shadow: 1em 1em 1em gray;
       border-radius: 0.5em;
       padding: 0.7em;
   }

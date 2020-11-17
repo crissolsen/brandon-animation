@@ -1,0 +1,118 @@
+<template>
+    <div>
+        <TheNav />
+        <h1 style="text-align: center;font-family: 'Architects Daughter', sans-serif;">Portfolio of Animations</h1>
+        <div id="selectTags">
+            <div id="main-buttons">
+                <div @click= "updateTagName(tags[0]), pandora=false"> General</div>
+                <div @click= "updateTagName(tags[1]), pandora=true"> Pandora</div>
+            </div>
+        </div>
+            <div id="pandora-options" v-if="pandora">
+                <div v-if="pandora" @click= "updateTagName(tags[2])"> Pandora Human Characters</div>
+                <div v-if="pandora" @click= "updateTagName(tags[3])"> Pandora Mermaid Character</div>
+                <div v-if="pandora" @click= "updateTagName(tags[4])"> Pandora Character</div>
+            </div>
+        
+        <div v-if="$fetchState.pending" id="loading"></div>
+        <h2 v-else-if="$fetchState.error" id="error">An error occurred, please try again</h2>
+        <div v-else id= "video-container">
+            <video v-for= "vid in displayVids.resources" :key= "vid.public_id" controls>
+                <source :src= "vidURI(vid.public_id)" alt="animated video" />
+            </video>
+        </div>
+        <TheFooter />
+    </div>
+</template>
+
+<script>
+export default {
+    data() {
+        return {
+            tags: [ "general", "pandora-game", "pandora-npc_human", "pandora-npc_mermaid", "pandora-pandora"],
+            vidsTag: "general",
+            pandora: false,
+            displayVids: []
+        }
+    },
+    async fetch() {
+        this.displayVids = []
+        this.displayVids = await fetch(`https://res.cloudinary.com/bbarwise/video/list/${this.vidsTag}.json`)
+        .then(res => res.json())
+        console.log(this.displayVids)
+    },
+    methods: {
+        vidURI(name) {
+            return ("https://res.cloudinary.com/bbarwise/video/upload/q_auto,f_auto/v1604995017/"+name)
+        }, 
+        updateTagName(tag) {
+            this.vidsTag = tag
+            this.$fetch()
+        }
+    }    
+}
+</script>
+
+
+<style scoped>
+    #selectTags {
+        display: flex;
+        justify-content: center;
+    }
+
+    #main-buttons {
+        display: flex;
+    }
+
+    #pandora-options {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        width: 100%;
+    }
+
+    #main-buttons div, #pandora-options div {
+        padding: 0.5em;
+        background: black;
+        color: white;
+        font-family: 'Architects Daughter', sans-serif;
+        font-size: 1.3em;
+        margin: 1em;
+        flex-wrap: wrap;
+        border-radius: 0.4em;
+    }
+
+    #video-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-column-gap: 1em;
+        grid-row-gap: 1em;
+        width: 90%;
+        margin: 1em auto;
+        justify-items: center;
+    }
+
+    #video-container video {
+        width: 100%;
+        border-radius: 1em;
+        outline: none;
+        box-shadow: 0.2em 0.2em 0.4em gray;
+    }
+
+    #loading, #error {
+        text-align: center;
+    }
+
+    #loading {
+        width: 4em;
+        height: 4em;
+        background: black;
+        animation: load 1s infinite;
+        margin: 1em auto;
+        border-radius: 50%;
+    }
+
+    @keyframes load {
+        0% {transform: rotateZ(320deg); background: white; height: 10em; width: 10em;}
+    }
+</style>
