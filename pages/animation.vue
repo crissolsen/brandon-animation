@@ -4,22 +4,23 @@
         <h1 style="text-align: center;font-family: 'Architects Daughter', sans-serif;">Portfolio of Animations</h1>
         <div id="selectTags">
             <div id="main-buttons">
-                <div @click= "updateTagName(tags[0]), pandora=false"> General</div>
-                <div @click= "updateTagName(tags[1]), pandora=true"> Pandora</div>
+                <div @click= "updateTagName(tags[0]), pandora=false, initialFetch=true"> General</div>
+                <div @click= "updateTagName(tags[1]), pandora=true, initialFetch=true"> Pandora Game Animations </div>
             </div>
         </div>
             <div id="pandora-options" v-if="pandora">
-                <div v-if="pandora" @click= "updateTagName(tags[2])"> Pandora Human Characters</div>
-                <div v-if="pandora" @click= "updateTagName(tags[3])"> Pandora Mermaid Character</div>
-                <div v-if="pandora" @click= "updateTagName(tags[4])"> Pandora Character</div>
+                <div v-if="pandora" @click= "updateTagName(tags[2])"> Human</div>
+                <div v-if="pandora" @click= "updateTagName(tags[3])"> Mermaid</div>
+                <div v-if="pandora" @click= "updateTagName(tags[4])"> Pandora</div>
             </div>
-        
-        <div v-if="$fetchState.pending" id="loading"></div>
-        <h2 v-else-if="$fetchState.error" id="error">An error occurred, please try again</h2>
-        <div v-else id= "video-container">
-            <video v-for= "vid in displayVids.resources" :key= "vid.public_id" controls>
-                <source :src= "vidURI(vid.public_id)" alt="animated video" />
-            </video>
+        <div v-if= "initialFetch">
+            <div v-if="$fetchState.pending" id="loading"></div>
+            <h2 v-else-if="$fetchState.error" id="error">An error occurred, please try again</h2>
+            <div v-else id= "video-container">
+                <video v-for= "vid in displayVids.resources" :key= "vid.public_id" controls>
+                    <source :src= "vidURI(vid.public_id)" alt="animated video" />
+                </video>
+            </div>
         </div>
         <TheFooter />
     </div>
@@ -32,7 +33,8 @@ export default {
             tags: [ "general", "pandora-game", "pandora-npc_human", "pandora-npc_mermaid", "pandora-pandora"],
             vidsTag: "general",
             pandora: false,
-            displayVids: []
+            displayVids: [],
+            initialFetch: false
         }
     },
     async fetch() {

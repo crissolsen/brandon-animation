@@ -44,62 +44,71 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     "@nuxtjs/axios",
-    "nuxt-cookie-control"
+    "nuxt-cookie-control",
+    "@nuxtjs/cloudinary"
   ],
+
+  cloudinary: {
+    cloudName: "bbarwise",
+    apiKey: "832364679756366",
+    apiSecret: "i_0I950afZnWdBbO2eNd8qlukbw",
+    secure: false,
+    useComponent: true
+  },
 
   cookies: {
     necessary: [
-    {
-      //if multilanguage
-      name: {
-        en: 'Default Cookies'
-      },
-      //else
-      name:  'Default Cookies',
-      //if multilanguage
-      description: {
-        en:  'Used for cookie control.'
-      },
-      //else
-      description:  'Used for cookie control.',
-      cookies: ['cookie_control_consent', 'cookie_control_enabled_cookies']
-    },
-  ],
-  optional: [
-    {
-      name:  'Cloudinary',
-      //if you don't set identifier, slugified name will be used
-      identifier: 'cfruid',
-      //if multilanguage
-      description: {
-        en:  'Cloudinary is a media cdn'
-      },
-      //else
-      description:  'Cloudinary is a media cdn',
- 
-      initialState: true,
-      src:  'https://cloudinary.com',
-      async:  true,
-      cookies: ['_cfruid'],
-      accepted: () =>{
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({
-          'gtm.start': new Date().getTime(),
-          event: 'gtm.js'
-        });
-      },
-      declined: () =>{
+      {
+        //if multilanguage
+        name: {
+          en: "Default Cookies"
+        },
+        //else
+        name: "Default Cookies",
+        //if multilanguage
+        description: {
+          en: "Used for cookie control."
+        },
+        //else
+        description: "Used for cookie control.",
+        cookies: ["cookie_control_consent", "cookie_control_enabled_cookies"]
       }
-    }
-  ],
-  text: {
+    ],
+    optional: [
+      {
+        name: "Cloudinary",
+        //if you don't set identifier, slugified name will be used
+        identifier: "cfruid",
+        //if multilanguage
+        description: {
+          en: "Cloudinary is a media cdn"
+        },
+        //else
+        description: "Cloudinary is a media cdn",
+
+        initialState: true,
+        src: "https://cloudinary.com",
+        async: true,
+        cookies: ["_cfruid"],
+        accepted: () => {
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push({
+            "gtm.start": new Date().getTime(),
+            event: "gtm.js"
+          });
+        },
+        declined: () => {}
+      }
+    ],
+    text: {
       locale: {
         en: {
-            barTitle:  'Cookies',
-            barDescription:  'Thank you for visiting. We use cookies to enhance your experience. You can manage these cookies here or click "Accept all" to dismiss this notice',
-    },
-  }
-  },
+          barTitle: "Cookies",
+          barDescription:
+            'Thank you for visiting. We use cookies to enhance your experience. You can manage these cookies here or click "Accept all" to dismiss this notice'
+        }
+      }
+    }
   },
 
   // Axios module configuration (https://go.nuxtjs.dev/config-axios)
