@@ -43,18 +43,8 @@ export default {
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
     // https://go.nuxtjs.dev/axios
-    "@nuxtjs/axios",
-    "nuxt-cookie-control",
-    "@nuxtjs/cloudinary"
+    "nuxt-cookie-control"
   ],
-
-  cloudinary: {
-    cloudName: "bbarwise",
-    apiKey: "832364679756366",
-    apiSecret: "i_0I950afZnWdBbO2eNd8qlukbw",
-    secure: false,
-    useComponent: true
-  },
 
   cookies: {
     necessary: [

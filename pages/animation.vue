@@ -41,7 +41,6 @@ export default {
         this.displayVids = []
         this.displayVids = await fetch(`https://res.cloudinary.com/bbarwise/video/list/${this.vidsTag}.json`)
         .then(res => res.json())
-        console.log(this.displayVids)
     },
     methods: {
         vidURI(name) {
