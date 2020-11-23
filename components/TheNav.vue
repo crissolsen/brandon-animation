@@ -14,13 +14,11 @@
 <style scoped>
     @import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap?&family=Exo&display=swap');    
     nav {
-        margin-top: 1em;
         width: 80%;
         display: flex;
         justify-content: space-evenly;
         flex-wrap: wrap;
-        margin-bottom: 1em;
-        margin: 1em;
+        margin: 1em auto;
     }
 
     #barwise-heading {
