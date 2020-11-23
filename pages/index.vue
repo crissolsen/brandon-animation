@@ -5,7 +5,7 @@
         <div id="animations-container">
         </div>
         <video id="showcase-reel" controls>
-          <source src= "https://res.cloudinary.com/dvwsiufhl/video/upload/q_auto,f_auto/v1604672715/BrandonAnimation/6VpYiEj-EvC_576_jbni0y.mp4">
+          <source src= "https://res.cloudinary.com/bbarwise/video/upload/v1605960145/Showreel_h3xy1d.mp4">
         </video>
     </main>
     <AboutMe />

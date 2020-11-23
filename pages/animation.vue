@@ -5,13 +5,14 @@
         <div id="selectTags">
             <div id="main-buttons">
                 <div @click= "updateTagName(tags[0]), pandora=false, initialFetch=true"> General</div>
-                <div @click= "updateTagName(tags[1]), pandora=true, initialFetch=true"> Pandora Game Animations </div>
+                <div @click= "updateTagName(tags[1]), pandora=true, initialFetch=true"> Pandora (Game by Party Llama) </div>
             </div>
         </div>
             <div id="pandora-options" v-if="pandora">
                 <div v-if="pandora" @click= "updateTagName(tags[2])"> Human</div>
                 <div v-if="pandora" @click= "updateTagName(tags[3])"> Mermaid</div>
                 <div v-if="pandora" @click= "updateTagName(tags[4])"> Pandora</div>
+                <div v-if="pandora" @click= "updateTagName(tags[5])"> Athena</div>
             </div>
         <div v-if= "initialFetch">
             <div v-if="$fetchState.pending" id="loading"></div>
@@ -30,7 +31,7 @@
 export default {
     data() {
         return {
-            tags: [ "general", "pandora-game", "pandora-npc_human", "pandora-npc_mermaid", "pandora-pandora"],
+            tags: [ "general", "pandora-game", "pandora-npc_human", "pandora-npc_mermaid", "pandora-pandora", "pandora-athena"],
             vidsTag: "general",
             pandora: false,
             displayVids: [],

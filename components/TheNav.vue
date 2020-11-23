@@ -2,7 +2,7 @@
     <nav>
         <NuxtLink :to= "`/`" id="barwise-heading"><h1 >Brandon Barwise Animation</h1></NuxtLink>
         <div class="category-nav">
-            <NuxtLink :to="`/animation`" no-prefetch><h2>Portfolio of Work</h2></NuxtLink>
+            <NuxtLink :to="`/animation`"><h2>Portfolio of Work</h2></NuxtLink>
         </div>
         <div class="category-nav">
             <NuxtLink :to="`/contact`"><h2>Get Your Animation</h2></NuxtLink>
@@ -15,16 +15,17 @@
     @import url('https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap?&family=Exo&display=swap');    
     nav {
         margin-top: 1em;
-        width: 100%;
+        width: 80%;
         display: flex;
         justify-content: space-evenly;
         flex-wrap: wrap;
         margin-bottom: 1em;
+        margin: 1em;
     }
 
     #barwise-heading {
         font-size: 2em;
-        margin-bottom: 1em;
+        margin-bottom: 0.2em;
         font-family: 'Architects Daughter', sans-serif;
         text-align: center;
         color: black;
@@ -56,7 +57,7 @@
         font-size: 1.3em;
     }
 
-    .category-nav:nth-child(4) {
+    .category-nav:nth-child(3) {
         border-bottom: 2px solid  rgb(0,207,255,0.6);
     }
 </style>
