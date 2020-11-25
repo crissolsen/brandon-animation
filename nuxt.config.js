@@ -7,6 +7,9 @@ export default {
 
   // Global page headers (https://go.nuxtjs.dev/config-head)
   head: {
+    htmlAttrs: {
+      lang: "en"
+    },
     title: "Brandon Barwise | Animation Portfolio",
     meta: [
       { charset: "utf-8" },
