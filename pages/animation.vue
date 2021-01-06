@@ -6,17 +6,22 @@
             <div id="main-buttons">
                 <div @click= "updateTagName(tags[0]), pandora=false, initialFetch=true"> General</div>
                 <div @click= "updateTagName(tags[1]), pandora=true, initialFetch=true"> Pandora (Game) </div>
+                <!-- <div @click= "getFromFetch = 'image', images=true, updateTagName(tags[1]), initialFetch=true, pandora='false'"> Pandora Images </div> -->
             </div>
         </div>
-            <div id="pandora-options" v-if="pandora">
-                <div v-if="pandora" @click= "updateTagName(tags[4])"> Pandora</div>
-                <div v-if="pandora" @click= "updateTagName(tags[5])"> Athena</div>
-                <div v-if="pandora" @click= "updateTagName(tags[2])"> Human</div>
-                <div v-if="pandora" @click= "updateTagName(tags[3])"> Mermaid</div>
+            <div id="pandora-options" v-if= "pandora">
+                <div v-if="pandora" @click= "changeFromImgToVid(), updateTagName(tags[4])"> Pandora</div>
+                <div v-if="pandora" @click= "getFromFetch = 'image', images=true, updateTagName(tags[4])"> Pandora Images</div>
+                <div v-if="pandora" @click= "changeFromImgToVid(), updateTagName(tags[5])"> Athena</div>
+                <div v-if="pandora" @click= "changeFromImgToVid(), updateTagName(tags[2])"> Human</div>
+                <div v-if="pandora" @click= "changeFromImgToVid(), updateTagName(tags[3])"> Mermaid</div>
             </div>
         <div v-if= "initialFetch">
             <div v-if="$fetchState.pending" id="loading"></div>
             <h2 v-else-if="$fetchState.error" id="error">An error occurred, please try again</h2>
+            <div v-else-if= "images" id="image-container">
+                <img v-for= "img in displayVids.resources" :src= "vidURI(img.public_id)" :key= "img.public_id"/>
+            </div>
             <div v-else id= "video-container">
                 <video v-for= "vid in displayVids.resources" :key= "vid.public_id" controls>
                     <source :src= "vidURI(vid.public_id)" alt="animated video" />
@@ -35,21 +40,27 @@ export default {
             vidsTag: "general",
             pandora: false,
             displayVids: [],
+            getFromFetch: "video",
+            images: false,
             initialFetch: false
         }
     },
     async fetch() {
         this.displayVids = []
-        this.displayVids = await fetch(`https://res.cloudinary.com/bbarwise/video/list/${this.vidsTag}.json`)
+        this.displayVids = await fetch(`https://res.cloudinary.com/bbarwise/${this.getFromFetch}/list/${this.vidsTag}.json`)
         .then(res => res.json())
     },
     methods: {
         vidURI(name) {
-            return ("https://res.cloudinary.com/bbarwise/video/upload/q_auto,f_auto/v1604995017/"+name)
+            return (`https://res.cloudinary.com/bbarwise/${this.getFromFetch}/upload/q_auto,f_auto/v1604995017/${name}`)
         }, 
         updateTagName(tag) {
             this.vidsTag = tag
             this.$fetch()
+        },
+        changeFromImgToVid() {
+            this.getFromFetch = 'video'
+            this.images = false
         }
     }    
 }
@@ -64,6 +75,7 @@ export default {
 
     #main-buttons {
         display: flex;
+        cursor: pointer;
     }
 
     #pandora-options {
@@ -71,6 +83,7 @@ export default {
         justify-content: center;
         flex-wrap: wrap;
         width: 100%;
+        cursor: pointer;
     }
 
     #main-buttons div, #pandora-options div {
@@ -84,7 +97,7 @@ export default {
         border-radius: 0.4em;
     }
 
-    #video-container {
+    #video-container, #image-container {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
         grid-column-gap: 1em;
@@ -94,7 +107,7 @@ export default {
         justify-items: center;
     }
 
-    #video-container video {
+    #video-container video, #image-container img {
         width: 100%;
         border-radius: 1em;
         outline: none;
