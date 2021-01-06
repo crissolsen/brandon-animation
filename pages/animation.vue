@@ -11,7 +11,7 @@
         </div>
             <div id="pandora-options" v-if= "pandora">
                 <div v-if="pandora" @click= "changeFromImgToVid(), updateTagName(tags[4])"> Pandora</div>
-                <div v-if="pandora" @click= "getFromFetch = 'image', images=true, updateTagName(tags[4])"> Pandora Images</div>
+                <div v-if="pandora" @click= "getFromFetch = 'image', images=true, updateTagName(tags[4])"> Pandora Stills</div>
                 <div v-if="pandora" @click= "changeFromImgToVid(), updateTagName(tags[5])"> Athena</div>
                 <div v-if="pandora" @click= "changeFromImgToVid(), updateTagName(tags[2])"> Human</div>
                 <div v-if="pandora" @click= "changeFromImgToVid(), updateTagName(tags[3])"> Mermaid</div>
