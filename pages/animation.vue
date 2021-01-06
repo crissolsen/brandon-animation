@@ -20,7 +20,7 @@
             <div v-if="$fetchState.pending" id="loading"></div>
             <h2 v-else-if="$fetchState.error" id="error">An error occurred, please try again</h2>
             <div v-else-if= "images" id="image-container">
-                <img v-for= "img in displayVids.resources" :src= "vidURI(img.public_id)" :key= "img.public_id"/>
+                <a  v-for= "img in displayVids.resources" :key= "img.public_id" :href="vidURI(img.public_id)" target="_blank"><img :src= "vidURI(img.public_id)" /></a>
             </div>
             <div v-else id= "video-container">
                 <video v-for= "vid in displayVids.resources" :key= "vid.public_id" controls>
