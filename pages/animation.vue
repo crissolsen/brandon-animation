@@ -10,17 +10,21 @@
             </div>
         </div>
             <div id="pandora-options" v-if= "pandora">
-                <div v-if="pandora" @click= "changeFromImgToVid(), updateTagName(tags[4])"> Pandora</div>
-                <div v-if="pandora" @click= "getFromFetch = 'image', images=true, updateTagName(tags[4])"> Pandora Stills</div>
-                <div v-if="pandora" @click= "changeFromImgToVid(), updateTagName(tags[5])"> Athena</div>
-                <div v-if="pandora" @click= "changeFromImgToVid(), updateTagName(tags[2])"> Human</div>
-                <div v-if="pandora" @click= "changeFromImgToVid(), updateTagName(tags[3])"> Mermaid</div>
+                <div @click= "changeFromImgToVid(), updateTagName(tags[4])"> Pandora</div>
+                <div @click= "getFromFetch = 'image', images=true, updateTagName(tags[4])"> Pandora Stills</div>
+                <div @click= "changeFromImgToVid(), updateTagName(tags[5])"> Athena</div>
+                <div @click= "changeFromImgToVid(), updateTagName(tags[2])"> Human</div>
+                <div @click= "changeFromImgToVid(), updateTagName(tags[3])"> Mermaid</div>
+            </div>
+            <div id="pandora-button">
+                <a  v-if= "pandora" href="https://store.steampowered.com/app/791260/Pandora_Chains_of_Chaos/" target="_blank" ><img  src="https://cdn.cloudflare.steamstatic.com/steam/apps/791260/header.jpg?t=1606172618" />
+                <p>Click to view on Steam</p></a>
             </div>
         <div v-if= "initialFetch">
             <div v-if="$fetchState.pending" id="loading"></div>
             <h2 v-else-if="$fetchState.error" id="error">An error occurred, please try again</h2>
             <div v-else-if= "images" id="image-container">
-                <a  v-for= "img in displayVids.resources" :key= "img.public_id" :href="vidURI(img.public_id)" target="_blank"><img :src= "vidURI(img.public_id)" /></a>
+                <a  v-for= "img in displayVids.resources" :key= "img.public_id" :href="vidURI(img.public_id)" target="_blank"><img :src= "vidURI(img.public_id)" alt="stills"/></a>
             </div>
             <div v-else id= "video-container">
                 <video v-for= "vid in displayVids.resources" :key= "vid.public_id" controls>
@@ -125,6 +129,20 @@ export default {
         animation: load 1s infinite;
         margin: 1em auto;
         border-radius: 50%;
+    }
+
+    #pandora-button {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    #pandora-button p {
+        width: 100%;
+        text-align: center;
+        font-family: 'Architects Daughter', sans-serif;
+        color: black !important;
     }
 
     @keyframes load {
