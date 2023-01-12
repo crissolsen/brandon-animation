@@ -31,6 +31,13 @@
         flex-grow: 1;
   }
 
+  @media screen and (max-width: 600px) {
+    #barwise-heading {
+        font-size: 1.5em;
+        text-align: center;
+    }
+  }
+
   #barwise-heading h1 {
       border-radius: 0.5em;
       padding: 0.7em;

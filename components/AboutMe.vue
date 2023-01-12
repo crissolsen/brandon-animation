@@ -10,6 +10,7 @@ Other interests include history, science fiction and videogames
 </template>
 
 <style scoped>
+
     footer {
         width: 80%;
         margin: 0 auto;
@@ -18,7 +19,7 @@ Other interests include history, science fiction and videogames
 
     footer h2 {
         margin-top: 1em;
-        font-size: 2em;
+        font-size: 1.5em;
         font-family: 'Architects Daughter', sans-serif;
     }
 
