@@ -20,7 +20,6 @@ Other interests include history, science fiction and videogames
         margin-top: 1em;
         font-size: 2em;
         font-family: 'Architects Daughter', sans-serif;
-        text-align: center;
     }
 
     footer p {

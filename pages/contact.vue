@@ -3,7 +3,7 @@
     <TheNav />
   <div id="form-wrapper" v-if= "!submitted">
     <h1 class="form-title">
-      Enquiry Form
+      Contact
     </h1>
     <div class="content">
       <form name="contact"  @submit.stop.prevent= "submit" >     
@@ -16,7 +16,7 @@
         </label>
         <input class="form-field" name="_replyto" id="email" v-model= "email" />
         <label class="form-label" for="message">
-          How can we help?
+          How can I help?
         </label>
         <textarea class="form-field" name="message" id="message" v-model= "message"></textarea>
         <button class="form-button" type="submit" value="send" >Send Message</button>
@@ -61,6 +61,7 @@ export default {
     #form-wrapper {
       width: 80%;
       margin: 0.5em auto;
+      max-width: 500px;
       display: flex;
       flex-direction: column;
       justify-content: center;

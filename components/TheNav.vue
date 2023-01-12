@@ -2,10 +2,10 @@
     <nav>
         <NuxtLink :to= "`/`" id="barwise-heading"><h1 >Brandon Barwise Animation</h1></NuxtLink>
         <div class="category-nav">
-            <NuxtLink :to="`/animation`"><h2>Portfolio of Work</h2></NuxtLink>
+            <NuxtLink :to="`/animation`"><h2>Portfolio</h2></NuxtLink>
         </div>
         <div class="category-nav">
-            <NuxtLink :to="`/contact`"><h2>Get Your Animation</h2></NuxtLink>
+            <NuxtLink :to="`/contact`"><h2>Contact</h2></NuxtLink>
         </div>
     </nav>
 </template>
@@ -16,18 +16,19 @@
     nav {
         width: 80%;
         display: flex;
-        justify-content: space-evenly;
+        justify-content: space-between;
         flex-wrap: wrap;
         margin: 1em auto;
+        gap: 1em;
     }
 
     #barwise-heading {
         font-size: 2em;
         margin-bottom: 0.2em;
         font-family: 'Architects Daughter', sans-serif;
-        text-align: center;
         color: black;
         text-decoration: none;
+        flex-grow: 1;
   }
 
   #barwise-heading h1 {

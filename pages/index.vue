@@ -5,12 +5,12 @@
         <div id="animations-container">
         </div>
         <video id="showcase-reel" controls>
-          <source src= "https://res.cloudinary.com/bbarwise/video/upload/v1646644932/Showreel_pki5n9.mp4">
+          <source src= "https://res.cloudinary.com/bbarwise/video/upload/v1673448096/Showreel_mrzrjc.mp4">
         </video>
     </main>
     <AboutMe />
     <TheFooter />
-    <CookieControl/>
+    <!-- <CookieControl/> -->
   </div>
 </template>
 
@@ -30,12 +30,12 @@ export default {
   }
   
   #showcase-reel {
-    width: 100%;
+    width: 80%;
     min-width: 300px;
     border-radius: 1em;
     padding: 1em;
     box-shadow: 0 1em 3em gray;
-    animation: slow-fade 1.3s forwards;
+    /* animation: slow-fade 1.3s forwards; */
     margin: 0 auto;
   }
 

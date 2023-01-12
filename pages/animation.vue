@@ -17,17 +17,17 @@
                 <div @click= "changeFromImgToVid(), updateTagName(tags[3])"> Mermaid</div>
             </div>
             <div id="pandora-button">
-                <a  v-if= "pandora" href="https://store.steampowered.com/app/791260/Pandora_Chains_of_Chaos/" target="_blank" ><img  src="https://cdn.cloudflare.steamstatic.com/steam/apps/791260/header.jpg?t=1606172618" />
+                <a  v-if= "pandora" href="https://store.steampowered.com/app/791260/Pandora_Chains_of_Chaos/" target="_blank" ><img  src="https://cdn.cloudflare.steamstatic.com/steam/apps/791260/header.jpg?t=1606172618" alt="pandora logo"/>
                 <p>Click to view on Steam</p></a>
             </div>
-        <div v-if= "initialFetch">
+        <div v-if= "initialFetch" id="animations-container">
             <div v-if="$fetchState.pending" id="loading"></div>
             <h2 v-else-if="$fetchState.error" id="error">An error occurred, please try again</h2>
             <div v-else-if= "images" id="image-container">
-                <a  v-for= "img in displayVids.resources" :key= "img.public_id" :href="vidURI(img.public_id)" target="_blank"><img :src= "vidURI(img.public_id)" alt="stills"/></a>
+                <a  v-for= "img in displayVids.resources" :key= "img.public_id" :href="vidURI(img.public_id)" target="_blank"><img :src= "vidURI(img.public_id)" alt="stills" loading="lazy"/></a>
             </div>
             <div v-else id= "video-container">
-                <video v-for= "vid in displayVids.resources" :key= "vid.public_id" controls>
+                <video v-for= "vid in displayVids.resources" :key= "vid.public_id" controls preload="none">
                     <source :src= "vidURI(vid.public_id)" alt="animated video" />
                 </video>
             </div>
@@ -72,6 +72,10 @@ export default {
 
 
 <style scoped>
+    #animations-container {
+        width: 80%;
+        margin: 0 auto
+    }
     #selectTags {
         display: flex;
         justify-content: center;
@@ -103,7 +107,7 @@ export default {
 
     #video-container, #image-container {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
         grid-column-gap: 1em;
         grid-row-gap: 1em;
         width: 90%;
