@@ -20,6 +20,11 @@
         flex-wrap: wrap;
         margin: 1em auto;
         gap: 1em;
+
+    }
+
+    nav:hover {
+        bottom: 3px;
     }
 
     #barwise-heading {
@@ -51,6 +56,14 @@
         padding: 0.2em;
         font-family: 'Exo', sans-serif;
         margin-top: 0.5em;
+        position: relative;
+        transition: all 0.8s ease;
+        bottom: 0;
+    }
+
+    .category-nav:hover {
+        border-bottom: 2px solid  rgb(0,207,255,0.6);
+        bottom: 5px;
     }
 
     .category-nav a {
