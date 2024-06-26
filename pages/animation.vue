@@ -4,10 +4,11 @@
         <h1 style="text-align: center;font-family: 'Architects Daughter', sans-serif;">Portfolio of Animations</h1>
         <div id="selectTags">
             <div id="main-buttons">
-                <div @click="changeFromImgToVid(), updateTagName(tags[0]), pandora = false, initialFetch = true"> General
+                <div @click="changeFromImgToVid(), updateTagName(tags[0]), pandora = false, initialFetch = true">
+                    General
                 </div>
                 <div @click="updateTagName(tags[1]), pandora = true, initialFetch = true"> Pandora (Game) </div>
-                <div @click="appealStudios = true, pandora = false "> Appeal Studios</div>
+                <div @click="appealStudios = true, pandora = false, initialFetch = false"> Appeal Studios</div>
                 <!-- <div @click= "getFromFetch = 'image', images=true, updateTagName(tags[1]), initialFetch=true, pandora='false'"> Pandora Images </div> -->
             </div>
         </div>
@@ -31,20 +32,32 @@
             <!-- <div @click= "getFromFetch = 'image', images=true, updateTagName(tags[7])"> Appeal Studios</div> -->
             <div @click="changeFromImgToVid(), updateTagName(tags[7]), initialFetch = true"> Gameplay NPC</div>
             <div @click="changeFromImgToVid(), updateTagName(tags[8]), initialFetch = true"> Mocap Cleanup</div>
-            <div @click="changeFromImgToVid(), updateTagName(tags[9]), initialFetch = true"> Outcast a New Beginning</div>
+            <div @click="changeFromImgToVid(), updateTagName(tags[9]), initialFetch = true"> Outcast a New Beginning
+            </div>
 
         </div>
         <div v-if="initialFetch" id="animations-container">
             <div v-if="$fetchState.pending" id="loading"></div>
             <h2 v-else-if="$fetchState.error" id="error">An error occurred, please try again</h2>
             <div v-else-if="images" id="image-container">
-                <a v-for="img in displayVids.resources" :key="img.public_id" :href="vidURI(img.public_id)"
-                    target="_blank"><img :src="vidURI(img.public_id)" alt="stills" loading="lazy" /></a>
+                <a v-for="img in displayVids" :key="img.public_id" :href="vidURI(img.public_id)" target="_blank"><img
+                        :src="vidURI(img.public_id)" alt="stills" loading="lazy" /></a>
             </div>
             <div v-else id="video-container">
-                <video v-for="vid in displayVids.resources" :key="vid.public_id" controls preload="none">
+                <video v-for="vid in displayVids" :key="vid.public_id" controls preload="none">
                     <source :src="vidURI(vid.public_id)" alt="animated video" />
                 </video>
+            </div>
+            <div id="pagination">
+                <div id="pages">
+                    <div v-for="i in Math.ceil(fullVidsData.length / itemsPerPage)" :key="i" @click="currentPage = i, paginate()">
+                        {{ i }}
+                    </div>
+                </div>
+                <div id="pagination-buttons">
+                    <button @click="prevPage()" :disabled="currentPage === 1">Previous</button>
+                    <button @click="nextPage()" :disabled="displayVids.length < itemsPerPage">Next</button>
+                </div>
             </div>
         </div>
         <TheFooter />
@@ -62,13 +75,18 @@ export default {
             displayVids: [],
             getFromFetch: "video",
             images: false,
-            initialFetch: false
+            initialFetch: false,
+            currentPage: 1,
+            itemsPerPage: 5,
+            fullVidsData: []
         }
     },
     async fetch() {
-        this.displayVids = []
-        this.displayVids = await fetch(`https://res.cloudinary.com/bbarwise/${this.getFromFetch}/list/${this.vidsTag}.json`)
+        this.fullVidsData = []
+        this.fullVidsData = await fetch(`https://res.cloudinary.com/bbarwise/${this.getFromFetch}/list/${this.vidsTag}.json?page=1`)
             .then(res => res.json())
+            .then(json => json.resources)
+        this.paginate()
     },
     methods: {
         vidURI(name) {
@@ -81,6 +99,20 @@ export default {
         changeFromImgToVid() {
             this.getFromFetch = 'video'
             this.images = false
+        },
+        paginate() {
+            const startIndex = (this.currentPage - 1) * this.itemsPerPage
+            this.displayVids = this.fullVidsData.slice(startIndex, startIndex + this.itemsPerPage)
+        },
+        nextPage() {
+            this.currentPage++
+            this.paginate()
+        },
+        prevPage() {
+            if (this.currentPage > 1) {
+                this.currentPage--
+                this.paginate()
+            }
         }
     }
 }
@@ -114,7 +146,9 @@ export default {
 
 #main-buttons div,
 #pandora-options div,
-#appeal-options div {
+#appeal-options div,
+#pagination button {
+    cursor: pointer;
     padding: 0.5em;
     background: black;
     color: white;
@@ -123,6 +157,36 @@ export default {
     margin: 1em;
     flex-wrap: wrap;
     border-radius: 0.4em;
+}
+
+#pagination {
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#pages {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    background-color: azure;
+    border-radius: 30%;
+}
+
+#pages div {
+    padding: 0.1em;
+    background: black;
+    color: white;
+    border-radius: 0.3em;
+    margin: 0.3em;
+    font-family: 'Architects Daughter', sans-serif;
+    cursor: pointer;
+    width: 30px;
+    text-align: center;
+}
+
+#pagination button:disabled {
+    display: none;
 }
 
 #video-container,
