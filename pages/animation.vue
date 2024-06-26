@@ -4,10 +4,10 @@
         <h1 style="text-align: center;font-family: 'Architects Daughter', sans-serif;">Portfolio of Animations</h1>
         <div id="selectTags">
             <div id="main-buttons">
-                <div @click="changeFromImgToVid(), updateTagName(tags[0]), pandora = false, initialFetch = true">
+                <div @click="changeFromImgToVid(), updateTagName(tags[0]), pandora = false, initialFetch = true, appealStudios = false">
                     General
                 </div>
-                <div @click="updateTagName(tags[1]), pandora = true, initialFetch = true"> Pandora (Game) </div>
+                <div @click="updateTagName(tags[1]), pandora = true, initialFetch = true, appealStudios = false"> Pandora (Game) </div>
                 <div @click="appealStudios = true, pandora = false, initialFetch = false"> Appeal Studios</div>
                 <!-- <div @click= "getFromFetch = 'image', images=true, updateTagName(tags[1]), initialFetch=true, pandora='false'"> Pandora Images </div> -->
             </div>
