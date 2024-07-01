@@ -34,6 +34,8 @@
             <div @click="changeFromImgToVid(), updateTagName(tags[8]), initialFetch = true"> Mocap Cleanup</div>
             <div @click="changeFromImgToVid(), updateTagName(tags[9]), initialFetch = true"> Outcast a New Beginning
             </div>
+            <div @click="changeFromImgToVid(), updateTagName(tags[10]), initialFetch = true"> Cutscenes
+            </div>
 
         </div>
         <div v-if="initialFetch" id="animations-container">
@@ -68,7 +70,7 @@
 export default {
     data() {
         return {
-            tags: ["general", "pandora-game", "pandora-npc_human", "pandora-npc_mermaid", "pandora-pandora", "pandora-athena", "Appeal_Studios", "Gameplay-NPC", "Mocap-Cleanup", "Outcast_A_New_Beginning"],
+            tags: ["general", "pandora-game", "pandora-npc_human", "pandora-npc_mermaid", "pandora-pandora", "pandora-athena", "Appeal_Studios", "Gameplay-NPC", "Mocap-Cleanup", "Outcast_A_New_Beginning", "Cutscenes"],
             vidsTag: "general",
             pandora: false,
             appealStudios: false,
@@ -77,7 +79,7 @@ export default {
             images: false,
             initialFetch: false,
             currentPage: 1,
-            itemsPerPage: 5,
+            itemsPerPage: 9,
             fullVidsData: []
         }
     },
@@ -122,7 +124,7 @@ export default {
 <style scoped>
 #animations-container {
     width: 80%;
-    margin: 0 auto
+    margin: 1em auto;
 }
 
 #selectTags {
@@ -169,7 +171,7 @@ export default {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    background-color: azure;
+    /* background-color: azure; */
     border-radius: 30%;
 }
 
@@ -192,10 +194,10 @@ export default {
 #video-container,
 #image-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     grid-column-gap: 1em;
     grid-row-gap: 1em;
-    width: 90%;
+    /* width: 90%; */
     margin: 1em auto;
     justify-items: center;
 }
@@ -206,6 +208,8 @@ export default {
     border-radius: 1em;
     outline: none;
     box-shadow: 0.2em 0.2em 0.4em gray;
+    margin: 0;
+    padding: 0;
 }
 
 #loading,
